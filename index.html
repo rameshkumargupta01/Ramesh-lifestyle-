@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Ramesh Kumar Gupta | Photographer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {margin:0;font-family:Arial, Helvetica, sans-serif;background:#f4f6f8;color:#333;}
+    header {background:#0d47a1;color:white;padding:50px 20px;text-align:center;}
+    header img {width:150px;height:150px;border-radius:50%;border:4px solid white;object-fit:cover;}
+    header h1 {margin:15px 0 5px;font-size:32px;}
+    header p {font-size:16px;opacity:0.9;}
+    section {max-width:1000px;margin:30px auto;background:white;padding:30px;border-radius:8px;box-shadow:0 0 12px rgba(0,0,0,0.1);}
+    section h2 {color:#0d47a1;margin-bottom:15px;}
+    .skills span {display:inline-block;background:#e3f2fd;color:#0d47a1;padding:8px 12px;margin:6px;border-radius:20px;font-size:14px;}
+    .social-links a {margin:0 12px;color:#0d47a1;text-decoration:none;font-weight:bold;}
+    .social-links a:hover{text-decoration:underline;}
+    .portfolio {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
+    .portfolio img {width:200px;height:150px;object-fit:cover;border-radius:8px;cursor:pointer;transition:0.3s;}
+    .portfolio img:hover {transform:scale(1.05);}
+    .lightbox {display:none;position:fixed;z-index:999;padding-top:60px;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.9);}
+    .lightbox-content {margin:auto;display:block;width:80%;max-width:900px;}
+    .close, .prev, .next {position:absolute;color:white;font-size:30px;font-weight:bold;cursor:pointer;user-select:none;}
+    .close {top:15px;right:35px;}
+    .prev {top:50%;left:0;margin-top:-20px;}
+    .next {top:50%;right:0;margin-top:-20px;}
+    footer{text-align:center;padding:15px;background:#0d47a1;color:white;margin-top:30px;}
+    @media(max-width:600px){.portfolio img{width:100%;height:auto;}}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="photo.jpg" alt="Ramesh Kumar Gupta">
+    <h1>Ramesh Kumar Gupta</h1>
+    <p>Professional Photographer</p>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p>
+        मैं एक passionate Photographer हूँ जो creative photography और video content में excellence पसंद करता हूँ। 
+        Photo और video editing का काम भी professional level पर करता हूँ। हमेशा नया सीखने और experiment करने में विश्वास रखता हूँ।
+    </p>
+</section>
+
+<section>
+    <h2>My Skills</h2>
+    <div class="skills">
+        <span>Photography</span>
+        <span>Photo Editing</span>
+        <span>Video Editing</span>
+        <span>Creative Content</span>
+    </div>
+</section>
+
+<section>
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+        <!-- 41 फोटो डालें -->
+        <script>
+            for(let i=1;i<=41;i++){
+                document.write(`<img src="photo${i}.jpg" alt="Portfolio ${i}" onclick="openLightbox();currentSlide(${i})">`);
+            }
+        </script>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<section>
+    <h2>Contact</h2>
+    <div class="contact-info">
+        <p><strong>Email:</strong> ramesh38469@gmail.com</p>
+        <p><strong>Mobile:</strong> +91 7667974547</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/ramesh_guptan?igsh=bG8wb205bTV1MjNy" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/share/17Z74eU1Se/" target="_blank">Facebook</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2025 Ramesh Kumar Gupta | All Rights Reserved
+</footer>
+
+<script>
+let slideIndex = 1;
+function openLightbox(){document.getElementById('lightbox').style.display='block';}
+function closeLightbox(){document.getElementById('lightbox').style.display='none';}
+function currentSlide(n){showSlide(slideIndex=n);}
+function changeSlide(n){showSlide(slideIndex+=n);}
+function showSlide(n){
+    let slides=document.querySelectorAll('.portfolio img');
+    if(n>slides.length){slideIndex=1;}
+    if(n<1){slideIndex=slides.length;}
+    document.getElementById('lightbox-img').src=slides[slideIndex-1].src;
+}
+</script>
+
+</body>
+</html>
